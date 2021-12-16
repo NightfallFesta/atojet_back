@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,height  =device-height,user-scalable=no,target-densitydpi=device-dpi">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>atozet patient case</title>
+		<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/esoduo3.css">
+		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="./js/jquery-ui.js"></script>
+		<script type="text/javascript" src="./js/jquery.ui.touch.js"></script>
+		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/swiper.5.3.6.js"></script>
+		<script src="http://admin.ckdmediview.com/detail/di_mcm/common/js/plugin/moment.min.js"></script>
+		<style>
+		/* 공통 */
+		.swiper-button-disabled {opacity:0;}
+		.gallery-top .btn_next img, .gallery-top .btn_prev img {margin: 0; width:4.4vw; height:9vw;}
+		.w100p{width:100%;}
+		.thumbWrap{z-index: 2;}
+		.thumbDim {z-index: 2;background-color:#000;height: 41.25vw;width:100vw;position: absolute;top: 0vw;left: 0vw;opacity:0.7;}
+		.thumb {z-index: 2;background-color:#99b512;padding: 1.8vw 8.3vw;position: absolute;top: 41.25vw;left: 0vw;height: 15.1vw;width: 100%;}
+		.thumb .btn_next img, .thumb .btn_prev img {margin: 0; width:2.6vw; height:5.3vw;}
+		.thumb .swiper-slide{background-size: cover; background-position: center;width: 19.39vw;margin-right: 35px;}
+		.nav        {z-index: 2;position: absolute;top: 56.35vw;left: 0vw;background-image:url(./img/atozet-patientcase/nav.jpg);width: 100vw;height: 4.25vw;background-size: 100%;}
+		.nav .btn01 {width: 29vw;height: 4.25vw;display:inline-block;}
+		.nav .btn02 {width: 21vw;height: 4.25vw;display:inline-block;}
+		.nav .btn03 {width: 21vw;height: 4.25vw;display:inline-block;}
+		.nav .btn04 {width: 28vw;height: 4.25vw;display:inline-block;}
+		.thumbWrap.map .nav      {background-position-y: 100%;}
+
+		.area00-01 {position: absolute;left: 0vw;top: 23vw;}
+		.area00-01 .img01 {width: 24.2vw;height: 24.6vw;position: absolute;left: 63.84vw;top: -2.5vw;}
+		.area00-01 .img01_bg {width: 86.04vw;height: 15.2vw;}
+		.area00-02 {position: absolute;left: 80.4vw;top: 21.3vw;}
+		.area00-02 .img02 {width: 8.3vw;height: 8.3vw;}
+		.area00-03 {position: absolute;left: 82.6vw;top: 32.5vw;}
+		.area00-03 .img03 {width: 7.56vw;height: 1.44vw;}
+		.area00-04 {position: absolute; left: 80.7vw; top: 26.7vw;}
+		.area00-04 .img04 {width: 6.66vw;height: 4.05vw;display: block;}
+		.area00-04 .img05 {width: 6.66vw;height: 4.05vw;display: block;}
+		.arrow01 { animation: arrow01 .3s 1s 1 backwards;}
+		.area00-05 {position: absolute;left: 36vw;top: 28vw;}
+		.area00-05 .img06 {width: 29.11vw;height: 5.15vw;display: block;}
+		@keyframes arrow01 {
+		0%   {left:40vw;top:-40vw;}
+		100% {left:0vw;top:0vw;}
+		}
+		.arrow02 { animation: arrow02 .3s 1.5s 1 backwards;}
+		@keyframes arrow02 {
+		0%   {left:56.3vw;top:5.6vw;}
+		100% {left:0vw;top:0vw;}
+		}
+		.shadow01 { animation: shadow01 .3s 1.2s 1 backwards;}
+		@keyframes shadow01 {
+		0%   {opacity:0}
+		100% {opacity:1}
+		}
+		.shadow02 { animation: shadow02 .3s 1.7s 1 backwards;}
+		@keyframes shadow02 {
+		0%   {opacity:0}
+		100% {opacity:1}
+		}
+		.title_ { animation: title_ .4s 1.7s 1 backwards;}
+		@keyframes title_ {
+		0%   {opacity:0}
+		100% {opacity:1}
+		}
+		/* 콘텐츠 */
+		.gotolistbg {position: absolute;top: 0vw;left: 0vw;width: 100vw;}
+		.gotolistbg img {display:none;}
+		.gotolist{position: absolute;top: 9vw;left: 18vw;border:0px solid red;}
+		.gotolist div{width: 25vw;height: 9.7vw;display:block;border:0px solid red;    margin-bottom: 2vw;}
+		.slider-vertical{position: absolute;left: 68.3vw;top: 19.9vw;height: 25vw;width: 2.5vw;border:0px solid red; background-color:transparent;border-radius: 1.25vw;}
+		.ui-slider-handle{background-color:transparent !important;border: 0 !important;outline: 0 !important;}
+		.ui-slider-range {background-color: #9e1685;border-radius: 1.25vw;padding: 0.6vw 0 1.9vw 0.6vw;box-sizing: border-box;}
+		.ui-slider-range::after {content:"";display:block;height: 2.5vw;width: 2.5vw;background:url(./img/atozet-patientcase/graph_sauce/thermometer_bt.png);background-size: 100% 100%;}
+		.slider_value{position: absolute;left: 63vw;top: 24.8vw;}
+		.ico_55 {position: absolute;top:9.5vw;height: 2.5vw;width: 2.5vw;background:url(./img/atozet-patientcase/graph_sauce/55.png);background-size: 100% 100%;}
+		.ico_70 {position: absolute;top:7vw;height: 2.5vw;width: 2.5vw;background:url(./img/atozet-patientcase/graph_sauce/70.png);background-size: 100% 100%;}
+		.ico_100 {position: absolute;top:2.5vw;height: 2.5vw;width: 2.5vw;background:url(./img/atozet-patientcase/graph_sauce/100.png);background-size: 100% 100%;}
+		.ico_116 {position: absolute;top:0;height: 2.5vw;width: 2.5vw;background:url(./img/atozet-patientcase/graph_sauce/116.png);background-size: 100% 100%;}
+		.confirm01{position: absolute;top: 48vw;left: 68.4vw;height: 5vw;width: 9vw;border:0px solid red;}
+		.confirm02{position: absolute;top: 48vw;left: 54vw;height: 5vw;width: 14vw;border:0px solid red;}
+		.pop01{position: absolute;top: 19.5vw;left: 21vw;width: 44vw;border:0px solid red;}
+		.pop02{position: absolute;top: 0vw;left: 0vw;width: 100vw;border:0px solid red;z-index:2;}
+		.pop02_close{position: absolute;top: 8vw;left: 19vw;width: 10vw;height: 10vw;border:0px solid red;}
+		.recommended{position: absolute;left: 73vw;top: 19.8vw;width: 6.5vw;height: 27vw;border:0px solid red;}
+		</style>
+	</head>
+	<body>
+	<div class="wrap">
+		<div class="container">
+			<div class="swiper-container gallery-top">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide slide_first">
+						<img src="./img/atozet-patientcase/01/first.jpg" class="w100p" alt="">
+						<div class="area area00-01 animated fadeInLeft">
+							<img src="./img/atozet-patientcase/01-bg.png" class="img01_bg" alt="">
+							<img src="./img/atozet-patientcase/01-target.png" class="img01" alt="">
+						</div>
+						<div class="area area00-02">
+							<img src="./img/atozet-patientcase/01-arrow01.png" class="img02 arrow01" alt="">
+						</div>
+						<div class="area area00-03">
+							<img src="./img/atozet-patientcase/01-arrow02.png" class="img03 arrow02" alt="">
+						</div>
+						<div class="area area00-04">
+							<img src="./img/atozet-patientcase/01-shadow01.png" class="img04 shadow01" alt="">
+							<img src="./img/atozet-patientcase/01-shadow02.png" class="img05 shadow02" alt="">
+						</div>
+						<div class="area area00-05">
+							<img src="./img/atozet-patientcase/title.png" class="img06 title_" alt="">
+						</div>
+					</div>
+					<div class="swiper-slide slide1">
+						<img src="./img/atozet-patientcase/01/03.jpg" class="w100p" alt="">
+						<div class="gotolistbg">
+							<img src="./img/atozet-patientcase/01/04.jpg" class="w100p goto01bg" alt="">
+							<img src="./img/atozet-patientcase/01/14.jpg" class="w100p goto02bg" alt="">
+							<img src="./img/atozet-patientcase/01/25.jpg" class="w100p goto03bg" alt="">
+							<img src="./img/atozet-patientcase/01/35.jpg" class="w100p goto04bg" alt="">
+						</div>
+						<div class="gotolist">
+							<div class="goto01"></div>
+							<div class="goto02"></div>
+							<div class="goto03"></div>
+							<div class="goto04"></div>
+						</div>
+					</div>
+					<div class="swiper-slide slide2">
+						<img src="./img/atozet-patientcase/01/05.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide3">
+						<img src="./img/atozet-patientcase/01/06.jpg" class="w100p" alt="">
+						<div class="slider_value">
+							<div class="ico_55"></div>
+							<div class="ico_70"></div>
+							<div class="ico_100"></div>
+							<div class="ico_116"></div>
+						</div>
+						<div class="slider-vertical"></div>
+						<div class="confirm01"></div>
+						<div class="pop01"><img src="./img/atozet-patientcase/01/pop_01.png" class="w100p" alt=""></div>
+						<div class="recommended"><img src="./img/atozet-patientcase/01/recommended.png" class="w100p" alt=""></div>
+					</div>
+					<div class="swiper-slide slide4">
+						<img src="./img/atozet-patientcase/01/12.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide5">
+						<img src="./img/atozet-patientcase/01/13.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide6">
+						<img src="./img/atozet-patientcase/01/15.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide7">
+						<img src="./img/atozet-patientcase/01/16.jpg" class="w100p" alt="">
+						<div class="slider_value">
+							<div class="ico_55"></div>
+							<div class="ico_70"></div>
+							<div class="ico_100"></div>
+							<div class="ico_116"></div>
+						</div>
+						<div class="slider-vertical"></div>
+						<div class="confirm01"></div>
+						<div class="confirm02"></div>
+						<div class="pop01"><img src="./img/atozet-patientcase/01/pop_02.png" class="w100p" alt=""></div>
+						<div class="recommended"><img src="./img/atozet-patientcase/01/recommended.png" class="w100p" alt=""></div>
+						<div class="pop02"><img src="./img/atozet-patientcase/01/21.jpg" class="w100p" alt=""><div class="pop02_close"></div></div>
+					</div>
+					<div class="swiper-slide slide8">
+						<img src="./img/atozet-patientcase/01/23.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide9">
+						<img src="./img/atozet-patientcase/01/24.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide10">
+						<img src="./img/atozet-patientcase/01/26.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide11">
+						<img src="./img/atozet-patientcase/01/27.jpg" class="w100p" alt="">
+						<div class="slider_value">
+							<div class="ico_55"></div>
+							<div class="ico_70"></div>
+							<div class="ico_100"></div>
+							<div class="ico_116"></div>
+						</div>
+						<div class="slider-vertical"></div>
+						<div class="confirm01"></div>
+						<div class="pop01"><img src="./img/atozet-patientcase/01/pop_03.png" class="w100p" alt=""></div>
+						<div class="recommended"><img src="./img/atozet-patientcase/01/recommended.png" class="w100p" alt=""></div>
+					</div>
+					<div class="swiper-slide slide12">
+						<img src="./img/atozet-patientcase/01/33.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide13">
+						<img src="./img/atozet-patientcase/01/34.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide14">
+						<img src="./img/atozet-patientcase/01/36.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide15">
+						<img src="./img/atozet-patientcase/01/37.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide16">
+						<img src="./img/atozet-patientcase/01/38.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide17">
+						<img src="./img/atozet-patientcase/01/39.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide18">
+						<img src="./img/atozet-patientcase/01/40.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide19">
+						<img src="./img/atozet-patientcase/01/41.jpg" class="w100p" alt="">
+						<div class="slider_value">
+							<div class="ico_55"></div>
+							<div class="ico_70"></div>
+							<div class="ico_100"></div>
+							<div class="ico_116"></div>
+						</div>
+						<div class="slider-vertical"></div>
+						<div class="confirm01"></div>
+						<div class="pop01"><img src="./img/atozet-patientcase/01/pop_04.png" class="w100p" alt=""></div>
+						<div class="recommended"><img src="./img/atozet-patientcase/01/recommended.png" class="w100p" alt=""></div>
+					</div>
+					<div class="swiper-slide slide20">
+						<img src="./img/atozet-patientcase/01/47.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide21">
+						<img src="./img/atozet-patientcase/01/48.jpg" class="w100p" alt="">
+					</div>
+					<div class="swiper-slide slide_last">
+						<img src="./img/atozet-patientcase/last.png" class="w100p" alt="">
+					</div>
+				</div>
+				<div class="swiper-button-next btn_next"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+				<div class="swiper-button-prev btn_prev"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+			</div>
+			<div class="thumbWrap">
+				<div class="thumbDim"></div>
+				<div class="thumb">
+					<div class="swiper-container gallery-thumbs">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/01.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/03.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/05.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/06.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/12.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/13.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/15.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/16.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/23.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/24.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/26.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/27.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/33.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/34.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/36.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/37.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/38.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/39.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/40.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/41.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/47.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/01/48.jpg)"></div>
+							<div class="swiper-slide" style="background-image:url(./img/atozet-patientcase/last.png)"></div>
+						</div>
+					</div>
+					<div class="swiper-button-next02 btn_next"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+					<div class="swiper-button-prev02 btn_prev"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+				</div>
+				<div class="nav"><div class="btn01"></div><div class="btn02"></div><div class="btn03"></div><div class="btn04"></div></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function QueryStringToJSON(str) {
+			str = str.replace(/^\?/, '');
+			var pairs = str.split('&');
+			var result = {};
+			pairs.forEach(function (pair) {
+					pair = pair.split('=');
+					var name = pair[0]
+					var value = pair[1]
+					if (name.length)
+							if (result[name] !== undefined) {
+									if (!result[name].push) {
+											result[name] = [result[name]];
+									}
+									result[name].push(value || '');
+							} else {
+									result[name] = value || '';
+							}
+			});
+			return (result);
+		}
+	
+		//var obj = QueryStringToJSON(window.location.search);
+		var obj = QueryStringToJSON(window.location.search);
+		//var obj = QueryStringToJSON('?brochureSn=10&actIdCegedim=2222222&pernr=100010&pernrT=김종국&remaindActSn=4');
+	
+		var button_next = $(".swiper-button-next");
+		var button_prev = $(".swiper-button-prev");
+		var thumbWrap   = $(".thumbWrap");
+		var thumbDim    = $(".thumbDim");
+		var thumb       = $(".thumb");
+		var nav         = $(".nav");
+		
+		var ico_55 = $(".ico_55");
+		var ico_70 = $(".ico_70");
+		var ico_100 = $(".ico_100");
+		var ico_116 = $(".ico_116");
+		var confirm01 = $(".confirm01");
+		var confirm02 = $(".confirm02");
+		var pop01 = $(".pop01");
+		var pop02 = $(".pop02");
+		var pop02_close = $(".pop02_close");
+		var recommended = $(".recommended");
+	
+		var startDate = moment()
+		function sendLog (index, comptAt, remaindActSn) {
+			/*
+				index : 슬라이드 인덱스
+				comptAt : 마지막장인지 아닌지, N, Y
+				remaindActSn : 리마인드액트 - 일련번호
+			*/
+			if(!obj.actIdCegedim){
+				return;
+			}
+			var pernrT = "";
+			if(obj.pernrT){
+				pernrT = decodeURI(obj.pernrT)
+			}
+	
+			var pernr = $.trim(decodeURI(obj.pernr));
+			var fd = new FormData()
+			fd.append('pernr', pernr)
+			fd.append('pernrT', pernrT)
+			fd.append('actIdCegedim', obj.actIdCegedim)
+			fd.append('brochureSn', obj.brochureSn)
+			fd.append('brochureViewPge', index)
+			fd.append('brochureBeginTime', startDate.format('YYYY.MM.DD HH:mm:ss'))
+			fd.append('brochureEndTime', moment().format('YYYY.MM.DD HH:mm:ss'))
+			fd.append('comptAt', comptAt)
+	
+			if (remaindActSn) {
+				fd.append('remaindActSn', remaindActSn)
+			}
+	
+			//console.log(remaindActSn);
+			//jquery ajax
+			//url : /api/detal/insert.do
+			//method : post
+			//data : form data
+			return $.ajax({
+				url: '/api/detal/insert.do',
+				method: 'post',
+				data: {
+					pernr : pernr,
+					pernrT : pernrT,
+					actIdCegedim : obj.actIdCegedim,
+					brochureSn : obj.brochureSn,
+					brochureViewPge : index,
+					brochureBeginTime : startDate.format('YYYY.MM.DD HH:mm:ss'),
+					brochureEndTime : moment().format('YYYY.MM.DD HH:mm:ss'),
+					comptAt : comptAt
+				}
+			})
+		}
+	
+		function checkPath() {
+	        if (location.search.indexOf('mrapp') > 0) {
+	            return 'https://www.ckdmediview.com/mrapp/detail/callDetailLastPage.do';
+	        } 
+	
+	        if (location.search.indexOf('hcpweb') > 0) {
+	            return 'https://www.ckdmediview.com/hcpweb/detail/callDetailLastPage.do';
+	        }
+	
+	        if (location.search.indexOf('hcpapp') > 0) {
+	            return 'https://www.ckdmediview.com/hcpapp/detail/callDetailLastPage.do';
+	        }
+	    }
+	
+		//첫번재 슬라이드에 대한 로그
+		sendLog(1, 'N')
+	
+		var galleryThumbs = new Swiper('.gallery-thumbs', {
+			spaceBetween: 35,
+			slidesPerView: 5,
+			freeMode: true,
+			watchSlidesVisibility: true,
+			watchSlidesProgress: true,
+			navigation:{
+				nextEl: '.swiper-button-next02',
+				prevEl: '.swiper-button-prev02'
+			}
+		});
+		
+		var swiper = [];
+		$('.gallery-top').each(function(index, e){
+			console.log("gallery-top")
+			var $this = $(this);
+	
+			$this.addClass('slider-' + index);
+	
+			//console.log(galleryThumbs)
+			swiper[index] = new Swiper('.slider-' + index, {
+				navigation:{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				},
+				thumbs: {
+					swiper: galleryThumbs
+				},
+				on : {
+					slideChange: function () {
+						var $this = this;
+						var slideInx = $this.activeIndex;
+						if($($this.slides[slideInx -1]).children('.wrap-slider-pop').css('display') == 'block'){
+							$($this.slides[slideInx -1]).children('.wrap-slider-pop').fadeOut(300);
+						}
+					}
+				},
+				observer: true,
+				observeParents: true
+			});
+	
+			var lastSlideIndex = swiper[0].slides.length - 1;
+	
+			swiper[index].on('slideChange', function(){
+				console.log(swiper[index].activeIndex );
+				pop01.hide();
+				pop02.hide();
+				recommended.hide();
+				ico_55.hide();
+				ico_70.hide();
+				ico_100.hide();
+				ico_116.hide();
+				if(swiper[index].activeIndex == 0){
+					button_next.show();
+					button_prev.hide();
+				}else if(swiper[index].activeIndex == 22){
+					button_next.hide();
+					button_prev.show();
+				}else{
+					button_next.show();
+					button_prev.show();
+				}
+				if (swiper[index].activeIndex === lastSlideIndex) {
+	            	window.location.href = checkPath();
+	        	}
+				if(swiper[index].activeIndex == 0 || swiper[index].activeIndex == 1){
+					thumbWrap.removeClass("map");
+					thumbDim.hide();
+					thumb.hide();
+					thumbWrap.hide();
+				}else{
+					thumbWrap.show();
+				}
+				//parent.globalObject.pptSlideChange(swiper[index].activeIndex, swiper[index].slides.length);
+				sendLog(this.activeIndex + 1, 'N',null)
+			})
+			
+			thumbWrap.hide();
+			thumbDim.hide();
+			thumb.hide();
+			
+			// pageNumber 가 있으면 이동 시킴
+			if(obj.pageNumber){
+				swiper[index].slideTo(obj.pageNumber, 0);
+			}
+	
+			$("#closeBtn").click(function(){
+				var result = sendLog(swiper[index].activeIndex + 1, 'Y');
+				if (result) {
+					result.done(function() {
+						parent.detailPttClose();
+					}).fail(function() {
+						alert('오류가 발생했습니다. 잠시 후 다시 시도해주십시오.');
+					});
+				} else {
+					parent.detailPttClose();
+				}
+			});
+			// 첫 화면으로 이동
+			$('.nav .btn01').on('click',function(){
+				console.log("btn01")
+				swiper[index].slideTo(0, 0);
+			});
+			// 미리보기
+			$('.nav .btn02').on('click',function(){
+				console.log("btn02")
+				thumbWrap.toggleClass("map");
+				thumbDim.toggle();
+				thumb.toggle();
+			});
+			// map 이동
+			$('.nav .btn03').on('click',function(){
+				var pageNumber = 1;
+				var params = window.location.search;
+				var url = "ato-clm1.html";
+				if(params.indexOf("?")>=0){
+					if(obj.pageNumber){
+						params = params.replace("pageNumber="+obj.pageNumber,"");
+						window.location = url+params+"pageNumber="+pageNumber;
+					}
+					window.location = url+urlParams+"&pageNumber="+pageNumber;
+				}
+				else{
+					window.location = url+"?pageNumber="+pageNumber;
+				}
+			});
+			$('.nav .btn04').on('click',function(){
+				var pageNumber = 16 //1 2 3 -> 16 17 18
+				var params = window.location.search;
+				var url = "ato-clm3.html";
+				if(params.indexOf("?")>=0){
+					if(obj.pageNumber){
+						params = params.replace("pageNumber="+obj.pageNumber,"");
+						window.location = url+params+"pageNumber="+pageNumber;
+					}
+					window.location = url+urlParams+"&pageNumber="+pageNumber;
+				}
+				else{
+					window.location = url+"?pageNumber="+pageNumber;
+				}
+			});
+	
+			$('.gotolist .goto01').on('mousedown',function(){
+				$(".goto01bg").show();
+			});
+			$('.gotolist .goto01').on('mouseup',function(){
+				$(".goto01bg").hide();
+				swiper[index].slideTo(2, 0);
+			});
+			$('.gotolist .goto02').on('mousedown',function(){
+				$(".goto02bg").show();
+			});
+			$('.gotolist .goto02').on('mouseup',function(){
+				$(".goto02bg").hide();
+				swiper[index].slideTo(6, 0);
+			});
+			$('.gotolist .goto03').on('mousedown',function(){
+				$(".goto03bg").show();
+			});
+			$('.gotolist .goto03').on('mouseup',function(){
+				$(".goto03bg").hide();
+				swiper[index].slideTo(10, 0);
+			});
+			$('.gotolist .goto04').on('mousedown',function(){
+				$(".goto04bg").show();
+			});
+			$('.gotolist .goto04').on('mouseup',function(){
+				$(".goto04bg").hide();
+				swiper[index].slideTo(14, 0);
+			});
+	
+			
+			$( ".slider-vertical" ).slider({
+				orientation: "vertical",
+				range: "min",
+				min: 0,
+				max: 150,
+				value: 0,
+				slide: function( event, ui ) {
+					if(55 < ui.value){ico_55.show();}else{ico_55.hide();}
+					if(70 < ui.value){ico_70.show();}else{ico_70.hide();}
+					if(100 < ui.value){ico_100.show();}else{ico_100.hide();}
+					if(116 < ui.value){ico_116.show();}else{ico_116.hide();}
+				}
+			});
+			confirm01.on('click',function(){
+				console.log("confirm01")
+				pop01.show();
+				recommended.show();
+			});
+			confirm02.on('click',function(){
+				console.log("confirm02")
+				pop02.show();
+			});
+			pop01.on('click',function(){
+				pop01.hide();
+				console.log("pop hide");
+			});
+			pop02_close.on('click',function(){
+				pop02.hide();
+				console.log("pop02 hide");
+			});
+		});
+		
+		// 슬라이드 이동
+		var movingSlider = (function(){
+	//          $('.area-detail-cont').hide();
+	
+			$('.detail-list a').on('click', function(){
+				var $this = $(this);
+				var sliderInx = $this.parent().index();
+				var detailList = $this.parents('.area-detail-list');
+	
+				detailList.next().show();
+				detailList.next().find('> div').eq(sliderInx).show().siblings().hide();
+				detailList.hide();
+			});
+	
+			$('.btn-return-detail').on('click', function(){
+				$('.area-detail-list').show();
+				$('.area-detail-cont').hide();
+			});
+	
+		})();
+	
+		// 도움말 팝업 호출
+		var slidePop = (function(){
+			$('.wrap-slider-pop').hide();
+	
+			$('.btn-help').on('click', function(){
+				$(this).parent().next().show();
+			});
+			$('.btn-hide-pop').on('click', function(){
+				if($(this).parent().css('display') == 'block'){
+					$(this).parent().hide();
+				}
+			});
+		})();
+	
+	
+	</script>
+</body>
+</html>
