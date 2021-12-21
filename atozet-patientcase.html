@@ -45,30 +45,7 @@
 		.arrow01 { animation: arrow01 .3s 1s 1 backwards;}
 		.area00-05 {position: absolute;left: 36vw;top: 28vw;}
 		.area00-05 .img06 {width: 29.11vw;height: 5.15vw;display: block;}
-		@keyframes arrow01 {
-		0%   {left:40vw;top:-40vw;}
-		100% {left:0vw;top:0vw;}
-		}
-		.arrow02 { animation: arrow02 .3s 1.5s 1 backwards;}
-		@keyframes arrow02 {
-		0%   {left:56.3vw;top:5.6vw;}
-		100% {left:0vw;top:0vw;}
-		}
-		.shadow01 { animation: shadow01 .3s 1.2s 1 backwards;}
-		@keyframes shadow01 {
-		0%   {opacity:0}
-		100% {opacity:1}
-		}
-		.shadow02 { animation: shadow02 .3s 1.7s 1 backwards;}
-		@keyframes shadow02 {
-		0%   {opacity:0}
-		100% {opacity:1}
-		}
-		.title_ { animation: title_ .4s 1.7s 1 backwards;}
-		@keyframes title_ {
-		0%   {opacity:0}
-		100% {opacity:1}
-		}
+		
 		/* 콘텐츠 */
 		.gotolistbg {position: absolute;top: 0vw;left: 0vw;width: 100vw;}
 		.gotolistbg img {display:none;}
@@ -89,6 +66,9 @@
 		.pop02{position: absolute;top: 0vw;left: 0vw;width: 100vw;border:0px solid red;z-index:2;}
 		.pop02_close{position: absolute;top: 8vw;left: 19vw;width: 10vw;height: 10vw;border:0px solid red;}
 		.recommended{position: absolute;left: 73vw;top: 19.8vw;width: 6.5vw;height: 27vw;border:0px solid red;}
+		.game1_bt{position: absolute; top: 70%; left:35%; background: url(/img/game1/powerful.png) no-repeat; background-size: 334px 68px; width:100%; height: 100%;}
+		.game1_bt:hover{background: url(/img/game1/powerful\ hover.png) no-repeat;}
+		.swiper-slide{ height: auto !important;}
 		</style>
 	</head>
 	<body>
@@ -106,7 +86,7 @@
 							<img src="./img/atozet-patientcase/title.png" class="img06 title_" alt="">
 						</div> -->
 					</div>
-					<div class="swiper-slide slide1">
+					<!-- <div class="swiper-slide slide1">
 						<img src="./img/atozet-patientcase/01/03.jpg" class="w100p" alt="">
 						<div class="gotolistbg">
 							<img src="./img/atozet-patientcase/01/04.jpg" class="w100p goto01bg" alt="">
@@ -120,25 +100,18 @@
 							<div class="goto03"></div>
 							<div class="goto04"></div>
 						</div>
-					</div>
+					</div> -->
 					<div class="swiper-slide slide2">
-						<img src="./img/atozet-patientcase/01/05.jpg" class="w100p" alt="">
+						<img src="./img/common/main_popup.png" class="w100p" alt="">
 					</div>
 					<div class="swiper-slide slide3">
-						<img src="./img/atozet-patientcase/01/06.jpg" class="w100p" alt="">
-						<div class="slider_value">
-							<div class="ico_55"></div>
-							<div class="ico_70"></div>
-							<div class="ico_100"></div>
-							<div class="ico_116"></div>
+						<img src="./img/game1/game1_main.png" class="w100p" alt="">
+						<div class="game1_bt">
+							<button></button>
 						</div>
-						<div class="slider-vertical"></div>
-						<div class="confirm01"></div>
-						<div class="pop01"><img src="./img/atozet-patientcase/01/pop_01.png" class="w100p" alt=""></div>
-						<div class="recommended"><img src="./img/atozet-patientcase/01/recommended.png" class="w100p" alt=""></div>
 					</div>
 					<div class="swiper-slide slide4">
-						<img src="./img/atozet-patientcase/01/12.jpg" class="w100p" alt="">
+						<img src="./img/game1/slide1_bg.png" class="w100p" alt="">
 					</div>
 					<div class="swiper-slide slide5">
 						<img src="./img/atozet-patientcase/01/13.jpg" class="w100p" alt="">
@@ -445,7 +418,7 @@
 				if (swiper[index].activeIndex === lastSlideIndex) {
 	            	window.location.href = checkPath();
 	        	}
-				if(swiper[index].activeIndex == 0 || swiper[index].activeIndex == 1){
+				if(swiper[index].activeIndex == 0 || swiper[index].activeIndex == 1 || swiper[index].activeIndex == 2 || swiper[index].activeIndex == 3){
 					thumbWrap.removeClass("map");
 					thumbDim.hide();
 					thumb.hide();
@@ -453,6 +426,8 @@
 				}else{
 					thumbWrap.show();
 				}
+
+				
 				//parent.globalObject.pptSlideChange(swiper[index].activeIndex, swiper[index].slides.length);
 				sendLog(this.activeIndex + 1, 'N',null)
 			})
@@ -550,7 +525,9 @@
 				$(".goto04bg").hide();
 				swiper[index].slideTo(14, 0);
 			});
-	
+			$('.game1_bt').click(function(){
+				swiper[index].slideTo(3)
+			})
 			
 			$( ".slider-vertical" ).slider({
 				orientation: "vertical",
