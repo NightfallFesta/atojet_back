@@ -10,11 +10,13 @@
 		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/swiper.min.css">
 		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/animate.min.css">
 		<link rel="stylesheet" type="text/css" href="http://admin.ckdmediview.com/detail/di_mcm/detail/css/esoduo3.css">
+		<link rel="stylesheet" type="text/css" href="./css/common.css">
 		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="./js/jquery-ui.js"></script>
 		<script type="text/javascript" src="./js/jquery.ui.touch.js"></script>
 		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/swiper.5.3.6.js"></script>
 		<script src="http://admin.ckdmediview.com/detail/di_mcm/common/js/plugin/moment.min.js"></script>
+		<script type="text/javascript" src="./js/common.js"></script>
 		<style>
 		/* 공통 */
 		.swiper-button-disabled {opacity:0;}
@@ -77,32 +79,12 @@
 			<div class="swiper-container gallery-top">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide slide_first">
-						<img src="./img/common/main_bg.png" class="w100p" alt="">
-						<!-- <div class="area area00-04">
-							<img src="./img/atozet-patientcase/01-shadow01.png" class="img04 shadow01" alt="">
-							<img src="./img/atozet-patientcase/01-shadow02.png" class="img05 shadow02" alt="">
-						</div>
-						<div class="area area00-05">
-							<img src="./img/atozet-patientcase/title.png" class="img06 title_" alt="">
-						</div> -->
+						<img src="./img/Main/main_bg.png" class="w100p" alt="">
+						<button class="next_bt"></button>
 					</div>
-					<!-- <div class="swiper-slide slide1">
-						<img src="./img/atozet-patientcase/01/03.jpg" class="w100p" alt="">
-						<div class="gotolistbg">
-							<img src="./img/atozet-patientcase/01/04.jpg" class="w100p goto01bg" alt="">
-							<img src="./img/atozet-patientcase/01/14.jpg" class="w100p goto02bg" alt="">
-							<img src="./img/atozet-patientcase/01/25.jpg" class="w100p goto03bg" alt="">
-							<img src="./img/atozet-patientcase/01/35.jpg" class="w100p goto04bg" alt="">
-						</div>
-						<div class="gotolist">
-							<div class="goto01"></div>
-							<div class="goto02"></div>
-							<div class="goto03"></div>
-							<div class="goto04"></div>
-						</div>
-					</div> -->
 					<div class="swiper-slide slide2">
-						<img src="./img/common/main_popup.png" class="w100p" alt="">
+						<img src="./img/Main/main_popup.png" class="w100p" alt="">
+						<button class="next_bt"></button>
 					</div>
 					<div class="swiper-slide slide3">
 						<img src="./img/game1/game1_main.png" class="w100p" alt="">
@@ -200,8 +182,8 @@
 						<img src="./img/atozet-patientcase/last.png" class="w100p" alt="">
 					</div>
 				</div>
-				<div class="swiper-button-next btn_next"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
-				<div class="swiper-button-prev btn_prev"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+				<!-- <div class="swiper-button-next btn_next"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
+				<div class="swiper-button-prev btn_prev"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div> -->
 			</div>
 			<div class="thumbWrap">
 				<div class="thumbDim"></div>
@@ -349,7 +331,7 @@
 	            return 'https://www.ckdmediview.com/hcpapp/detail/callDetailLastPage.do';
 	        }
 	    }
-	
+		
 		//첫번재 슬라이드에 대한 로그
 		sendLog(1, 'N')
 	
@@ -525,9 +507,12 @@
 				$(".goto04bg").hide();
 				swiper[index].slideTo(14, 0);
 			});
-			$('.game1_bt').click(function(){
-				swiper[index].slideTo(3)
-			})
+
+			$('.swiper-slide .next_bt').click(function(){
+   		 swiper[index].slideNext();
+  		})
+			
+			
 			
 			$( ".slider-vertical" ).slider({
 				orientation: "vertical",
@@ -581,7 +566,10 @@
 			});
 	
 		})();
+
+		
 	
+		
 		// 도움말 팝업 호출
 		var slidePop = (function(){
 			$('.wrap-slider-pop').hide();
@@ -596,7 +584,7 @@
 			});
 		})();
 	
-	
+		
 	</script>
 </body>
 </html>
