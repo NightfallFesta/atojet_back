@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,height  =device-height,user-scalable=no,target-densitydpi=device-dpi">
+		<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>atozet patient case</title>
 		<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
@@ -13,9 +12,9 @@
 		<link rel="stylesheet" type="text/css" href="./css/common.css">
 		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="./js/jquery-ui.js"></script>
-		<script type="text/javascript" src="./js/jquery.ui.touch.js"></script>
+		<script type="text/javascript" src="./js/jquery.ui.touch.js"></script> <!-- 모바일 터치 관련 -->
 		<script type="text/javascript" src="http://admin.ckdmediview.com/detail/di_mcm/detail/js/swiper.5.3.6.js"></script>
-		<script src="http://admin.ckdmediview.com/detail/di_mcm/common/js/plugin/moment.min.js"></script>
+		<script src="http://admin.ckdmediview.com/detail/di_mcm/common/js/plugin/moment.min.js"></script> <!-- 종근당 관련 -->
 		<script type="text/javascript" src="./js/common.js"></script>
 		<style>
 		/* 공통 */
@@ -71,10 +70,14 @@
 		.game1_bt{position: absolute; top: 70%; left:35%; background: url(/img/game1/powerful.png) no-repeat; background-size: 334px 68px; width:100%; height: 100%;}
 		.game1_bt:hover{background: url(/img/game1/powerful\ hover.png) no-repeat;}
 		.swiper-slide{ height: auto !important;}
+
+		.sortable-handler {
+			touch-action: none;
+			}
 		</style>
 	</head>
 	<body>
-	<div class="wrap">
+	<div class="wrap sortable-handler">
 		<div class="container">
 			<div class="swiper-container gallery-top">
 				<div class="swiper-wrapper">
@@ -87,13 +90,34 @@
 						<button class="next_bt"></button>
 					</div>
 					<div class="swiper-slide slide3">
-						<img src="./img/game1/game1_main.png" class="w100p" alt="">
-						<div class="game1_bt">
-							<button></button>
-						</div>
+						<img src="./img/julda/game_main.png" class="w100p" alt="">
+						<button class="start_bt"></button>
 					</div>
 					<div class="swiper-slide slide4">
-						<img src="./img/game1/slide1_bg.png" class="w100p" alt="">
+						<img src="./img/julda/slide1_bg.png" class="w100p" alt="">
+						<div class="line_people1"></div>
+						<div class="line_people2"></div>
+						<div class="line_people3"></div>
+						<div class="game1_select_bt">
+							<button class="g1_bt1"></button>
+							<button class="g1_bt2"></button>
+							<button class="g1_bt3"></button>
+						</div>
+						<div class="game1_img1">
+							<img src="./img/julda/proven.png" alt="">
+						</div>
+						<div class="game1_img2">
+							<img src="./img/julda/powerful.png" alt="">
+						</div>
+						<div class="game1_img3">
+							<img src="./img/julda/original.png" alt="">
+						</div>
+						<div class="gnb_bt">
+							<button></button>
+							<button></button>
+							<button></button>
+						</div>
+						<button class="next_bt"></button>
 					</div>
 					<div class="swiper-slide slide5">
 						<img src="./img/atozet-patientcase/01/13.jpg" class="w100p" alt="">
@@ -185,7 +209,7 @@
 				<!-- <div class="swiper-button-next btn_next"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div>
 				<div class="swiper-button-prev btn_prev"><img src="./img/atozet-patientcase/btn_ato.png" alt=""></div> -->
 			</div>
-			<div class="thumbWrap">
+			<div class="thumbWrap"> <!--------------------------------- map 이용 할건지요 확인필요 ---------------------------------------->
 				<div class="thumbDim"></div>
 				<div class="thumb">
 					<div class="swiper-container gallery-thumbs">
@@ -224,7 +248,7 @@
 	</div>
 
 	<script type="text/javascript">
-		function QueryStringToJSON(str) {
+		function QueryStringToJSON(str) { /* 필수 01 */
 			str = str.replace(/^\?/, '');
 			var pairs = str.split('&');
 			var result = {};
@@ -256,16 +280,16 @@
 		var thumb       = $(".thumb");
 		var nav         = $(".nav");
 		
-		var ico_55 = $(".ico_55");
-		var ico_70 = $(".ico_70");
-		var ico_100 = $(".ico_100");
-		var ico_116 = $(".ico_116");
-		var confirm01 = $(".confirm01");
-		var confirm02 = $(".confirm02");
-		var pop01 = $(".pop01");
-		var pop02 = $(".pop02");
-		var pop02_close = $(".pop02_close");
-		var recommended = $(".recommended");
+		// var ico_55 = $(".ico_55");
+		// var ico_70 = $(".ico_70");
+		// var ico_100 = $(".ico_100");
+		// var ico_116 = $(".ico_116");
+		// var confirm01 = $(".confirm01");
+		// var confirm02 = $(".confirm02");
+		// var pop01 = $(".pop01");
+		// var pop02 = $(".pop02");
+		// var pop02_close = $(".pop02_close");
+		// var recommended = $(".recommended");
 	
 		var startDate = moment()
 		function sendLog (index, comptAt, remaindActSn) {
@@ -316,21 +340,21 @@
 					comptAt : comptAt
 				}
 			})
-		}
+		}  /*  // 필수 01 */
 	
-		function checkPath() {
-	        if (location.search.indexOf('mrapp') > 0) {
-	            return 'https://www.ckdmediview.com/mrapp/detail/callDetailLastPage.do';
-	        } 
+	// 	function checkPath() {
+	//         if (location.search.indexOf('mrapp') > 0) {
+	//             return 'https://www.ckdmediview.com/mrapp/detail/callDetailLastPage.do';
+	//         } 
 	
-	        if (location.search.indexOf('hcpweb') > 0) {
-	            return 'https://www.ckdmediview.com/hcpweb/detail/callDetailLastPage.do';
-	        }
+	//         if (location.search.indexOf('hcpweb') > 0) {
+	//             return 'https://www.ckdmediview.com/hcpweb/detail/callDetailLastPage.do';
+	//         }
 	
-	        if (location.search.indexOf('hcpapp') > 0) {
-	            return 'https://www.ckdmediview.com/hcpapp/detail/callDetailLastPage.do';
-	        }
-	    }
+	//         if (location.search.indexOf('hcpapp') > 0) {
+	//             return 'https://www.ckdmediview.com/hcpapp/detail/callDetailLastPage.do';
+	//         }
+	//     }
 		
 		//첫번재 슬라이드에 대한 로그
 		sendLog(1, 'N')
@@ -379,20 +403,20 @@
 			var lastSlideIndex = swiper[0].slides.length - 1;
 	
 			swiper[index].on('slideChange', function(){
-				console.log(swiper[index].activeIndex );
-				pop01.hide();
-				pop02.hide();
-				recommended.hide();
-				ico_55.hide();
-				ico_70.hide();
-				ico_100.hide();
-				ico_116.hide();
+				// console.log(swiper[index].activeIndex );
+				// pop01.hide();
+				// pop02.hide();
+				// recommended.hide();
+				// ico_55.hide();
+				// ico_70.hide();
+				// ico_100.hide();
+				// ico_116.hide();
 				if(swiper[index].activeIndex == 0){
 					button_next.show();
 					button_prev.hide();
 				}else if(swiper[index].activeIndex == 22){
-					button_next.hide();
-					button_prev.show();
+					// button_next.hide();
+					// button_prev.show();
 				}else{
 					button_next.show();
 					button_prev.show();
@@ -436,81 +460,112 @@
 				}
 			});
 			// 첫 화면으로 이동
-			$('.nav .btn01').on('click',function(){
-				console.log("btn01")
-				swiper[index].slideTo(0, 0);
-			});
+			// $('.nav .btn01').on('click',function(){
+			// 	console.log("btn01")
+			// 	swiper[index].slideTo(0, 0);
+			// });
 			// 미리보기
-			$('.nav .btn02').on('click',function(){
-				console.log("btn02")
-				thumbWrap.toggleClass("map");
-				thumbDim.toggle();
-				thumb.toggle();
-			});
+			// $('.nav .btn02').on('click',function(){
+			// 	console.log("btn02")
+			// 	thumbWrap.toggleClass("map");
+			// 	thumbDim.toggle();
+			// 	thumb.toggle();
+			// });
 			// map 이동
-			$('.nav .btn03').on('click',function(){
-				var pageNumber = 1;
-				var params = window.location.search;
-				var url = "ato-clm1.html";
-				if(params.indexOf("?")>=0){
-					if(obj.pageNumber){
-						params = params.replace("pageNumber="+obj.pageNumber,"");
-						window.location = url+params+"pageNumber="+pageNumber;
-					}
-					window.location = url+urlParams+"&pageNumber="+pageNumber;
-				}
-				else{
-					window.location = url+"?pageNumber="+pageNumber;
-				}
-			});
-			$('.nav .btn04').on('click',function(){
-				var pageNumber = 16 //1 2 3 -> 16 17 18
-				var params = window.location.search;
-				var url = "ato-clm3.html";
-				if(params.indexOf("?")>=0){
-					if(obj.pageNumber){
-						params = params.replace("pageNumber="+obj.pageNumber,"");
-						window.location = url+params+"pageNumber="+pageNumber;
-					}
-					window.location = url+urlParams+"&pageNumber="+pageNumber;
-				}
-				else{
-					window.location = url+"?pageNumber="+pageNumber;
-				}
-			});
+			// $('.nav .btn03').on('click',function(){
+			// 	var pageNumber = 1;
+			// 	var params = window.location.search;
+			// 	var url = "ato-clm1.html";
+			// 	if(params.indexOf("?")>=0){
+			// 		if(obj.pageNumber){
+			// 			params = params.replace("pageNumber="+obj.pageNumber,"");
+			// 			window.location = url+params+"pageNumber="+pageNumber;
+			// 		}
+			// 		window.location = url+urlParams+"&pageNumber="+pageNumber;
+			// 	}
+			// 	else{
+			// 		window.location = url+"?pageNumber="+pageNumber;
+			// 	}
+			// });
+			// $('.nav .btn04').on('click',function(){
+			// 	var pageNumber = 16 //1 2 3 -> 16 17 18
+			// 	var params = window.location.search;
+			// 	var url = "ato-clm3.html";
+			// 	if(params.indexOf("?")>=0){
+			// 		if(obj.pageNumber){
+			// 			params = params.replace("pageNumber="+obj.pageNumber,"");
+			// 			window.location = url+params+"pageNumber="+pageNumber;
+			// 		}
+			// 		window.location = url+urlParams+"&pageNumber="+pageNumber;
+			// 	}
+			// 	else{
+			// 		window.location = url+"?pageNumber="+pageNumber;
+			// 	}
+			// });
 	
-			$('.gotolist .goto01').on('mousedown',function(){
-				$(".goto01bg").show();
-			});
-			$('.gotolist .goto01').on('mouseup',function(){
-				$(".goto01bg").hide();
-				swiper[index].slideTo(2, 0);
-			});
-			$('.gotolist .goto02').on('mousedown',function(){
-				$(".goto02bg").show();
-			});
-			$('.gotolist .goto02').on('mouseup',function(){
-				$(".goto02bg").hide();
-				swiper[index].slideTo(6, 0);
-			});
-			$('.gotolist .goto03').on('mousedown',function(){
-				$(".goto03bg").show();
-			});
-			$('.gotolist .goto03').on('mouseup',function(){
-				$(".goto03bg").hide();
-				swiper[index].slideTo(10, 0);
-			});
-			$('.gotolist .goto04').on('mousedown',function(){
-				$(".goto04bg").show();
-			});
-			$('.gotolist .goto04').on('mouseup',function(){
-				$(".goto04bg").hide();
-				swiper[index].slideTo(14, 0);
-			});
+			// $('.gotolist .goto01').on('mousedown',function(){
+			// 	$(".goto01bg").show();
+			// });
+			// $('.gotolist .goto01').on('mouseup',function(){
+			// 	$(".goto01bg").hide();
+			// 	swiper[index].slideTo(2, 0);
+			// });
+			// $('.gotolist .goto02').on('mousedown',function(){
+			// 	$(".goto02bg").show();
+			// });
+			// $('.gotolist .goto02').on('mouseup',function(){
+			// 	$(".goto02bg").hide();
+			// 	swiper[index].slideTo(6, 0);
+			// });
+			// $('.gotolist .goto03').on('mousedown',function(){
+			// 	$(".goto03bg").show();
+			// });
+			// $('.gotolist .goto03').on('mouseup',function(){
+			// 	$(".goto03bg").hide();
+			// 	swiper[index].slideTo(10, 0);
+			// });
+			// $('.gotolist .goto04').on('mousedown',function(){
+			// 	$(".goto04bg").show();
+			// });
+			// $('.gotolist .goto04').on('mouseup',function(){
+			// 	$(".goto04bg").hide();
+			// 	swiper[index].slideTo(14, 0);
+			// });
 
-			$('.swiper-slide .next_bt').click(function(){
-   		 swiper[index].slideNext();
-  		})
+			$('.slide_first .next_bt').on('click', function(){
+   		 		swiper[index].slideTo(1,300);
+  			});
+
+			$('.slide2 .next_bt').on('click', function(){
+   		 		swiper[index].slideTo(2,300);
+  			});
+			$('.slide3 .start_bt').on('click', function(){
+   		 		swiper[index].slideTo(3,300);
+  			});
+			$('.slide4 .next_bt').on('click', function(){
+   		 		swiper[index].slideTo(4,300);
+  			});
+				
+
+			$('.slide4 .game1_select_bt .g1_bt1').on('click', function(){
+				$(this).css({"opacity" : "0.4"})
+				$('.slide4 .game1_img1 img').css({"opacity" : "1"})
+			})
+			$('.slide4 .game1_select_bt .g1_bt2').on('click', function(){
+				$(this).css({"opacity" : "0.4"})
+				$('.slide4 .game1_img2 img').css({"opacity" : "1"})
+				$('.slide4 .line_people1').css({"opacity" : "0"})
+				$('.slide4 .line_people2').css({"opacity" : "1"})
+				$('.slide4 .line_people3').css({"opacity" : "0"})
+			})
+			$('.slide4 .game1_select_bt .g1_bt3').on('click', function(){
+				$(this).css({"opacity" : "0.4"})
+				$('.slide4 .game1_img3 img').css({"opacity" : "1"})
+				$('.slide4 .line_people1').css({"opacity" : "0"})
+				$('.slide4 .line_people2').css({"opacity" : "0"})
+				$('.slide4 .line_people3').css({"opacity" : "1"})
+			})
+			
 			
 			
 			
@@ -521,68 +576,68 @@
 				max: 150,
 				value: 0,
 				slide: function( event, ui ) {
-					if(55 < ui.value){ico_55.show();}else{ico_55.hide();}
-					if(70 < ui.value){ico_70.show();}else{ico_70.hide();}
-					if(100 < ui.value){ico_100.show();}else{ico_100.hide();}
-					if(116 < ui.value){ico_116.show();}else{ico_116.hide();}
+					// if(55 < ui.value){ico_55.show();}else{ico_55.hide();}
+					// if(70 < ui.value){ico_70.show();}else{ico_70.hide();}
+					// if(100 < ui.value){ico_100.show();}else{ico_100.hide();}
+					// if(116 < ui.value){ico_116.show();}else{ico_116.hide();}
 				}
 			});
-			confirm01.on('click',function(){
-				console.log("confirm01")
-				pop01.show();
-				recommended.show();
-			});
-			confirm02.on('click',function(){
-				console.log("confirm02")
-				pop02.show();
-			});
-			pop01.on('click',function(){
-				pop01.hide();
-				console.log("pop hide");
-			});
-			pop02_close.on('click',function(){
-				pop02.hide();
-				console.log("pop02 hide");
-			});
+			// confirm01.on('click',function(){
+			// 	console.log("confirm01")
+			// 	pop01.show();
+			// 	recommended.show();
+			// });
+			// confirm02.on('click',function(){
+			// 	console.log("confirm02")
+			// 	pop02.show();
+			// });
+			// pop01.on('click',function(){
+			// 	pop01.hide();
+			// 	console.log("pop hide");
+			// });
+			// pop02_close.on('click',function(){
+			// 	pop02.hide();
+			// 	console.log("pop02 hide");
+			// });
 		});
 		
 		// 슬라이드 이동
-		var movingSlider = (function(){
-	//          $('.area-detail-cont').hide();
+		//var movingSlider = (function(){
+	// $('.area-detail-cont').hide();
 	
-			$('.detail-list a').on('click', function(){
-				var $this = $(this);
-				var sliderInx = $this.parent().index();
-				var detailList = $this.parents('.area-detail-list');
+		// 	$('.detail-list a').on('click', function(){
+		// 		var $this = $(this);
+		// 		var sliderInx = $this.parent().index();
+		// 		var detailList = $this.parents('.area-detail-list');
 	
-				detailList.next().show();
-				detailList.next().find('> div').eq(sliderInx).show().siblings().hide();
-				detailList.hide();
-			});
+		// 		detailList.next().show();
+		// 		detailList.next().find('> div').eq(sliderInx).show().siblings().hide();
+		// 		detailList.hide();
+		// 	});
 	
-			$('.btn-return-detail').on('click', function(){
-				$('.area-detail-list').show();
-				$('.area-detail-cont').hide();
-			});
+		// 	$('.btn-return-detail').on('click', function(){
+		// 		$('.area-detail-list').show();
+		// 		$('.area-detail-cont').hide();
+		// 	});
 	
-		})();
+		// });
 
 		
 	
 		
 		// 도움말 팝업 호출
-		var slidePop = (function(){
-			$('.wrap-slider-pop').hide();
+		// var slidePop = (function(){
+		// 	$('.wrap-slider-pop').hide();
 	
-			$('.btn-help').on('click', function(){
-				$(this).parent().next().show();
-			});
-			$('.btn-hide-pop').on('click', function(){
-				if($(this).parent().css('display') == 'block'){
-					$(this).parent().hide();
-				}
-			});
-		})();
+		// 	$('.btn-help').on('click', function(){
+		// 		$(this).parent().next().show();
+		// 	});
+		// 	$('.btn-hide-pop').on('click', function(){
+		// 		if($(this).parent().css('display') == 'block'){
+		// 			$(this).parent().hide();
+		// 		}
+		// 	});
+		// });
 	
 		
 	</script>
