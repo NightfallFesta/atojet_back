@@ -1,15 +1,54 @@
+/* next slide button css*/
 .next_bt{background: url(../img/common/nextboutton.png); background-size: 100% 100%; width: 78px; height: 82px; position: absolute;transform: translate(-50%, -50%)}
 .slide_first .next_bt{ bottom:17.5%; left:80%; }
 .slide2 .next_bt{bottom:7%; left:84%; width: 53px; height:57px}
 .slide4 .next_bt{bottom:0; right: 0;}
+.slide8 .next_bt{bottom:0; right: 0;}
+.slide9 .next_bt{bottom:0; right: 0;}
+.slide10 .next_bt{bottom:0; right: 0;}
+.slide11 .next_bt{bottom:0; right: 0;}
 
-
+/* start button css */
 .start_bt{background:url(../img/common/button.png); background-size: 100% 100%; width:456px; height: 112px; position: absolute;}
 .slide3 .start_bt{left:50%; bottom:20%; transform: translateX(-50%);}
+.slide7 .start_bt{left:50%; bottom:20%; transform: translateX(-50%);}
 
-.slide4 .line_people1 {position: absolute; top:37px; left:10%;  background: url(../img/julda/slide1_people1.png)no-repeat; background-size: 100%; width: 100%; height: 100%; opacity:1}
-.slide4 .line_people2 {position: absolute; top:27px; left:12%;  background: url(../img/julda/slide1_people2.png)no-repeat; background-size: 100%; width: 100%; height: 100%; opacity: 0;}
-.slide4 .line_people3 {position: absolute; top:27px; left:11%;  background: url(../img/julda/slide1_people3.png)no-repeat; background-size: 80%; width: 100%; height: 100%; opacity:0}
+/* gnb button css*/
+.gnb_bt{ display: flex; flex-direction: column; position: absolute; right: 0; bottom:0; transform: translate(-50%, -50%);}
+.gnb_bt button{margin-bottom: 2.5px}
+.gnb_bt .gnb01{ background: url(../img/common/gamelist.png); width: 76px; height: 80px;}
+.gnb_bt .gnb02{ background: url(../img/common/pi.png); width: 76px; height: 80px;}
+.gnb_bt .gnb03{ background: url(../img/common/ssi.png); width: 76px; height: 80px;}
+.gnb_bt .gnb04{ background: url(../img/common/refstudy.png); width: 76px; height: 80px;}
+
+/* ok button css */
+.ok_bt {background: url(../img/common/okbutton.png)center no-repeat; width: 110px; height: 198px; position: absolute;}
+
+/* nextgame button css*/
+.nextgame_bt { position: absolute; background: url(../img/common/nextgame_bt.png)top no-repeat; background-size:80%; width: 441px; height: 127px; }
+.slide6 .nextgame_bt{right: 0;bottom:0;}
+
+/* modal close button css*/
+.modal_close{background: url(../img/common/modalclose.png)no-repeat; background-size: 100%; width: 54px; height: 56px; position: absolute; right: 11.5%; top:23%; transform: translate(-50%, -50%);}
+
+/* power button css*/
+.power_bt { background:url(../img/ddakji/power.gif)no-repeat;position: absolute; left:50%; bottom:18%; transform: translateX(-50%); width: 120px; height: 200px;}
+
+/* gamelist button css */
+
+.gamelist{position: absolute; z-index: 5; top:0; bottom: 0; width: 100%; height: 100%; display:none; }
+.gamelist .gamelist_bg{background: rgba(10,10,10,0.4); width: 100%; height: 100%; position: absolute; top:0; right: 0;}
+.gamelist .gamewrap{ width: 100%; height: 55%; z-index: 3; position: absolute; bottom:0; left:0}
+.gamelist .gamewrap .game_cont{background: url(../img/julda/gamelistpopup.png)bottom no-repeat;  background-size: 95%;width: 100%; height: 100%;}
+.gamelist .gamewrap .thumb_game{display: flex; justify-content: center; position: absolute; bottom: 3%; left:0; }
+.gamelist .gamewrap .thumb_game div{width: 21%; margin:0.5% 1%}
+.gamelist .gamewrap .thumb_game div img{width: 100%;}
+
+
+/* slide4 page css */
+.slide4 .line_people1 {position: absolute; top:48px; left:10%;  background: url(../img/julda/slide_people1.gif)no-repeat; background-size: 80%; width: 100%; height: 100%; opacity:1}
+.slide4 .line_people2 {position: absolute; top:40px; left:12%;  background: url(../img/julda/slide_people2.gif)no-repeat; background-size: 100%; width: 100%; height: 100%; opacity: 0;}
+.slide4 .line_people3 {position: absolute; top:40px; left:11%;  background: url(../img/julda/slide_people5.gif)no-repeat; background-size: 100%; width: 100%; height: 100%; opacity:0}
 .slide4 .game1_select_bt{position: absolute; display: flex; bottom: 110px; left:50%; transform: translateX(-50%); }
 .slide4 .game1_select_bt .g1_bt1{background:url(../img/julda/proven.png); background-size: 100% 100%;width: 334px; height: 68px; transition: all .3s; }
 .slide4 .game1_select_bt .g1_bt1:hover{background: url(../img/julda/provenhover.png);}
@@ -17,10 +56,73 @@
 .slide4 .game1_select_bt .g1_bt2:hover{background: url(../img/julda/powerfulhover.png);}
 .slide4 .game1_select_bt .g1_bt3{background:url(../img/julda/original.png); background-size: 100% 100%;width: 334px; height: 68px; transition: all .3s;}
 .slide4 .game1_select_bt .g1_bt3:hover{background: url(../img/julda/originalhover.png);}
-
 .slide4 .game1_img1{position: absolute;left:24%; top:48%;;}
 .slide4 .game1_img1 img{width:250px; height: 50px; opacity:0; transition: all .3s;}
 .slide4 .game1_img2{position: absolute;left:48.5%; top:48%;;}
 .slide4 .game1_img2 img{width:245px; height: 50px; opacity:0; transition: all .3s;}
 .slide4 .game1_img3{position: absolute;left:36.5%; top:57.2%;;}
 .slide4 .game1_img3 img{width:250px; height: 50px; opacity:0; transition: all .3s;}
+.slide4 .ref_page {width: 100%;height: 100%; position: relative;}
+.slide4 .ref_page .ref_bg{background: rgba(10,10,10,0.4); width: 100%; height: 100%; position: absolute; top:0; right: 0;}
+.slide4 .ref_page .ref_cont{position: absolute; z-index: 2; top:50%; left:50%; transform: translate(-50%, -50%); width: 80%; height: 80%;}
+.slide4 .ref_page .ref_cont img {width: 100%; position: absolute; z-index: 2; top:50%; left:50%; transform: translate(-50%, -50%);} 
+.slide4 .s4_modal{width: 100%; height: 100%; display:none}
+.slide4 .s4_modal .s4modal_wrap{background: rgba(10,10,10,0.6); background-size: 100% 100%;width: 100%; height: 100%; position: absolute; top:0; left:0}
+.slide4 .s4_modal .s4modal_cont{ }
+.slide4 .s4_modal .s4modal_cont img{width: 80%; position: absolute; left:50%; top:50%; transform: translate(-50%, -50%);}
+
+/* slide5 page css */
+.slide5 .gnb_bt { margin-bottom: 50px}
+.slide5 .next_bt{right: 0; bottom:0}
+.slide5 .s5_gif{position: absolute; top:53%; left:50%; width: 80%; transform: translate(-50%, -50%);}
+
+.slide5 .ok_bt{left:50%; bottom:5%; transform: translateX(-50%); background-size: 80%;}
+
+/* slide6 page css */
+.slide6 .s6_modal{width: 100%; height: 100%; display:none}
+.slide6 .s6_modal .s6modal_wrap{background: rgba(10,10,10,0.6); background-size: 100% 100%;width: 100%; height: 100%; position: absolute; top:0; left:0}
+.slide6 .s6_modal .s6modal_cont{ }
+.slide6 .s6_modal .s6modal_cont img{width: 80%; position: absolute; left:50%; top:50%; transform: translate(-50%, -50%);}
+
+/* slide8 page css*/
+.slide8 .ddak_wrap{position: absolute; left:50%; top:60%; transform: translate(-50%, -50%); display: flex; align-items: center;}
+.slide8 .ddak_view{background: url(../img/ddakji/ddakbutton.png);position: absolute; left:50%; bottom: 10%; transform: translateX(-50%); width:254px; height: 89px;}
+.slide8 .s8_modal{width: 100%; height: 100%; display:none}
+.slide8 .s8_modal .s8modal_wrap{background: rgba(10,10,10,0.6); background-size: 100% 100%;width: 100%; height: 100%; position: absolute; top:0; left:0}
+.slide8 .s8_modal .s8modal_cont{ }
+.slide8 .s8_modal .s8modal_cont img{width: 80%; position: absolute; left:50%; top:50%; transform: translate(-50%, -50%);}
+
+/* slide9 page css */
+.slide9 .ddak_wrap{position: absolute; left:50%; top:65%; transform: translate(-50%, -50%); display: flex; align-items: center;}
+.slide9 .ddak_wrap .ddakji1 > img{height: 400px;}
+.slide9 .ddak_wrap .ddakji2 > img{height: 400px;}
+.slide9 .ddak_wrap .ddakji3 > img{height: 400px;}
+.slide9 .ddak_wrap div{display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.slide9 .ddak_wrap div button{z-index: 0;}
+
+.slide9 .ddak_wrap .ddakji1 .ddakji_bt{background: url(../img/ddakji/ddakji1bt.png)center no-repeat; background-size:80%; width:139px; height: 123px;}
+.slide9 .ddak_wrap .ddakji1 .ddakji_bt.off{background: url(../img/ddakji/ddakji2bt_back.png)center no-repeat; background-size:80%; width:100%; height: 123px;}
+.slide9 .ddak_wrap .ddakji1 .img_opacity{opacity:0.3;}
+.slide9 .ddak_wrap .ddakji1 .img_opacity.on1{opacity:1;}
+.slide9 .ddak_wrap .ddakji2 .ddakji_bt{background: url(../img/ddakji/ddakji2bt.png)center no-repeat; background-size:80%; width:139px; height: 123px;}
+.slide9 .ddak_wrap .ddakji2 .ddakji_bt.off{background: url(../img/ddakji/ddakji2bt_back.png)center no-repeat; background-size:80%; width:100%; height: 123px;}
+.slide9 .ddak_wrap .ddakji2 .img_opacity{opacity:0.3;}
+.slide9 .ddak_wrap .ddakji2 .img_opacity.on1{opacity:1;}
+.slide9 .ddak_wrap .ddakji3 .ddakji_bt{background: url(../img/ddakji/ddakji3bt.png)center no-repeat; background-size:80%; width:139px; height: 123px;}
+.slide9 .ddak_wrap .ddakji3 .ddakji_bt.off{background: url(../img/ddakji/ddakji3bt_back.png)center no-repeat; background-size:80%; width:100%; height: 123px;}
+.slide9 .ddak_wrap .ddakji3 .img_opacity{opacity:0.3;}
+.slide9 .ddak_wrap .ddakji3 .img_opacity.on1{opacity:1;}
+
+
+.slide9 .s9_modal{width: 100%; height: 100%; display:none}
+.slide9 .s9_modal .s9modal_wrap{background: rgba(10,10,10,0.6); background-size: 100% 100%;width: 100%; height: 100%; position: absolute; top:0; left:0}
+.slide9 .s9_modal .s9modal_cont{ }
+.slide9 .s9_modal .s9modal_cont img{width: 80%; position: absolute; left:50%; top:50%; transform: translate(-50%, -50%);}
+
+/* slide10 page css*/
+.slide10 .gnb_bt {margin-bottom: 80px;}
+
+/* slide11 page css*/
+.slide11 .game2_child{position: absolute; left:25%; top:30%}
+.slide11 .gnb_bt {margin-bottom: 80px;}
+.slide11 .ok_bt {left:50%; bottom:5%; transform: translateX(-50%); background-size: 80%;}
